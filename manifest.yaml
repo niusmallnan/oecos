@@ -1,0 +1,7 @@
+iso:
+  bootloader-in-rootfs: true
+  grub-entry-name: "OECOS Installer"
+
+squash-no-compression: true
+name: "oecos"
+date: true

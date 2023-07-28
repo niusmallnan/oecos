@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd $(dirname $0)/..
+
+mkdir dist/
+
+docker build -t niusmallnan/oecos:latest .
+
+docker run -it --rm -v $PWD:/build \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    ghcr.io/rancher/elemental-toolkit/elemental-cli:v0.10.7 build-iso \
+    --local --config-dir build/ -o build/dist/ niusmallnan/oecos:latest
